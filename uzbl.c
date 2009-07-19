@@ -520,6 +520,23 @@ catch_alrm(int s) {
 /* --- CALLBACKS --- */
 
 gboolean
+navigation_cb (WebKitWebView *web_view, WebKitWebFrame *frame, WebKitNetworkRequest *request, gpointer user_data) {
+    (void) frame;
+    (void) user_data;
+    const gchar* uri = webkit_network_request_get_uri (request);
+    if (uzbl.state.verbose)
+        printf("Navigating to -> %s\n", uri);
+    SoupURI *suri = soup_uri_new(uri);
+    if (!strcmp (suri->scheme, "about")) {
+        if (suri->path && !strcmp (suri->path, "uzbl")) {
+            webkit_web_view_load_string(web_view, "uzbl is cool!", "text/plain", "UTF-8", uri);
+        } else
+            webkit_web_view_load_string(web_view, "", "text/html", "UTF-8", uri);
+    }
+    return WEBKIT_NAVIGATION_RESPONSE_ACCEPT;
+}
+
+gboolean
 new_window_cb (WebKitWebView *web_view, WebKitWebFrame *frame, WebKitNetworkRequest *request, WebKitWebNavigationAction *navigation_action, WebKitWebPolicyDecision *policy_decision, gpointer user_data) {
     (void) web_view;
     (void) frame;
@@ -2181,6 +2198,7 @@ create_browser () {
     g_signal_connect (G_OBJECT (g->web_view), "load-finished", G_CALLBACK (log_history_cb), g->web_view);
     g_signal_connect (G_OBJECT (g->web_view), "load-finished", G_CALLBACK (load_finish_cb), g->web_view);
     g_signal_connect (G_OBJECT (g->web_view), "hovering-over-link", G_CALLBACK (link_hover_cb), g->web_view);
+    g_signal_connect (G_OBJECT (g->web_view), "navigation-requested", G_CALLBACK (navigation_cb), g->web_view);
     g_signal_connect (G_OBJECT (g->web_view), "new-window-policy-decision-requested", G_CALLBACK (new_window_cb), g->web_view);
     g_signal_connect (G_OBJECT (g->web_view), "download-requested", G_CALLBACK (download_cb), g->web_view);
     g_signal_connect (G_OBJECT (g->web_view), "create-web-view", G_CALLBACK (create_web_view_cb), g->web_view);

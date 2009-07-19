@@ -244,6 +244,9 @@ gboolean
 new_window_cb (WebKitWebView *web_view, WebKitWebFrame *frame, WebKitNetworkRequest *request, WebKitWebNavigationAction *navigation_action, WebKitWebPolicyDecision *policy_decision, gpointer user_data);
 
 gboolean
+navigation_cb (WebKitWebView *web_view, WebKitWebFrame *frame, WebKitNetworkRequest *request, gpointer user_data);
+
+gboolean
 mime_policy_cb(WebKitWebView *web_view, WebKitWebFrame *frame, WebKitNetworkRequest *request, gchar *mime_type,  WebKitWebPolicyDecision *policy_decision, gpointer user_data);
 
 WebKitWebView*
