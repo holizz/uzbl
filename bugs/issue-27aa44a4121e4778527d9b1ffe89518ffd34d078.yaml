@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Pressing non-printing keys after a * command reexecutes it
+desc: i.e. /text<Mod4><Mod4> searches for "text" an additional two times
+type: :bugfix
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-01 17:10:51.161491 Z
+references: []
+
+id: 27aa44a4121e4778527d9b1ffe89518ffd34d078
+log_events: 
+- - 2009-08-01 17:10:52.729144 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""

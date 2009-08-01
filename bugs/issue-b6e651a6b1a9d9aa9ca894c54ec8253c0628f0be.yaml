@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Download handler which uses cookies (integrate into daemon?)
+desc: ""
+type: :feature
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-01 17:13:07.387139 Z
+references: []
+
+id: b6e651a6b1a9d9aa9ca894c54ec8253c0628f0be
+log_events: 
+- - 2009-08-01 17:13:08.282903 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""

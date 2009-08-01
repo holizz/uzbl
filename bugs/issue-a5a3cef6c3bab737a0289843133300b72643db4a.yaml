@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Outside of insert mode, arrow keys should scroll, not affect input widgets
+desc: ""
+type: :bugfix
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-01 17:11:35.370005 Z
+references: []
+
+id: a5a3cef6c3bab737a0289843133300b72643db4a
+log_events: 
+- - 2009-08-01 17:11:36.233670 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""

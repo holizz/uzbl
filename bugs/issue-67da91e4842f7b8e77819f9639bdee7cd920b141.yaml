@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Make $6 work properly
+desc: $6 should be the URI of the document, but it can be something like "gmail.com", before "http://" is prepended
+type: :bugfix
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-01 17:04:58.341168 Z
+references: []
+
+id: 67da91e4842f7b8e77819f9639bdee7cd920b141
+log_events: 
+- - 2009-08-01 17:04:59.108918 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""

@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Make -h an alias for --help/-?
+desc: ""
+type: :feature
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-01 17:17:13.006104 Z
+references: []
+
+id: 14f4a4cb7946ef1f5550332da77d54c6021face9
+log_events: 
+- - 2009-08-01 17:17:13.533854 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""

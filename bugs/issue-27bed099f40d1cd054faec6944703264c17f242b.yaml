@@ -1,0 +1,20 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: JavaScript alerts make GTK warnings
+desc: |-
+  Example: uzbl "javascript:alert('hi')"
+  (uzbl:8883): Gdk-CRITICAL **: gdk_x11_atom_to_xatom_for_display: assertion `atom != GDK_NONE' failed
+type: :bugfix
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-01 17:02:37.619406 Z
+references: []
+
+id: 27bed099f40d1cd054faec6944703264c17f242b
+log_events: 
+- - 2009-08-01 17:02:39.043223 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""

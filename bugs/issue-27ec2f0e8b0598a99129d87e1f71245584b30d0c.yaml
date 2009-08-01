@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: http:/???/ segfaults
+desc: ""
+type: :bugfix
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-01 17:01:25.842500 Z
+references: []
+
+id: 27ec2f0e8b0598a99129d87e1f71245584b30d0c
+log_events: 
+- - 2009-08-01 17:01:26.802220 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""
