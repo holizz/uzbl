@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Config file in standard language
+desc: The config file is difficult to parse for external scripts -> write it in a standardised language, like JSON or YAML
+type: :feature
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-02 08:48:53.838564 Z
+references: []
+
+id: 2d60793d67f9c2b31cc02fc582cf96eaf5f807a7
+log_events: 
+- - 2009-08-02 08:48:55.294420 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""
