@@ -570,14 +570,22 @@ download_cb (WebKitWebView *web_view, GObject *download, gpointer user_data) {
     return (FALSE);
 }
 
-/* scroll a bar in a given direction */
+/* scroll uzbl.gui.scrolled_win in a given direction */
 void
-scroll (GtkAdjustment* bar, GArray *argv) {
+scroll (GArray *argv, const gboolean horizontal) {
     gchar *end;
     gdouble max_value;
+    GtkScrolledWindow *scrolled_win;
+    GtkAdjustment *adj;
 
-    gdouble page_size = gtk_adjustment_get_page_size(bar);
-    gdouble value = gtk_adjustment_get_value(bar);
+    scrolled_win = GTK_SCROLLED_WINDOW(uzbl.gui.scrolled_win);
+    if (horizontal)
+        adj = gtk_scrolled_window_get_hadjustment(scrolled_win);
+    else
+        adj = gtk_scrolled_window_get_vadjustment(scrolled_win);
+
+    gdouble page_size = gtk_adjustment_get_page_size(adj);
+    gdouble value = gtk_adjustment_get_value(adj);
     gdouble amount = g_ascii_strtod(g_array_index(argv, gchar*, 0), &end);
 
     if (*end == '%')
@@ -585,37 +593,48 @@ scroll (GtkAdjustment* bar, GArray *argv) {
     else
         value += amount;
 
-    max_value = gtk_adjustment_get_upper(bar) - page_size;
+    max_value = gtk_adjustment_get_upper(adj) - page_size;
 
     if (value > max_value)
         value = max_value; /* don't scroll past the end of the page */
 
-    gtk_adjustment_set_value (bar, value);
+    gtk_adjustment_set_value (adj, value);
 }
 
 void
 scroll_begin(WebKitWebView* page, GArray *argv, GString *result) {
     (void) page; (void) argv; (void) result;
-    gtk_adjustment_set_value (uzbl.gui.bar_v, gtk_adjustment_get_lower(uzbl.gui.bar_v));
+    GtkScrolledWindow *scrolled_win;
+    GtkAdjustment *adj;
+    scrolled_win = GTK_SCROLLED_WINDOW(uzbl.gui.scrolled_win);
+    adj = gtk_scrolled_window_get_vadjustment(scrolled_win);
+    gtk_adjustment_set_value(adj, gtk_adjustment_get_lower(adj));
+    gtk_scrolled_window_set_vadjustment(scrolled_win, adj);
+    gtk_adjustment_value_changed(adj);
 }
 
 void
 scroll_end(WebKitWebView* page, GArray *argv, GString *result) {
     (void) page; (void) argv; (void) result;
-    gtk_adjustment_set_value (uzbl.gui.bar_v, gtk_adjustment_get_upper(uzbl.gui.bar_v) -
-                              gtk_adjustment_get_page_size(uzbl.gui.bar_v));
+    GtkScrolledWindow *scrolled_win;
+    GtkAdjustment *adj;
+    scrolled_win = GTK_SCROLLED_WINDOW(uzbl.gui.scrolled_win);
+    adj = gtk_scrolled_window_get_vadjustment(scrolled_win);
+    gtk_adjustment_set_value(adj, gtk_adjustment_get_upper(adj));
+    gtk_scrolled_window_set_vadjustment(scrolled_win, adj);
+    gtk_adjustment_value_changed(adj);
 }
 
 void
 scroll_vert(WebKitWebView* page, GArray *argv, GString *result) {
     (void) page; (void) result;
-    scroll(uzbl.gui.bar_v, argv);
+    scroll(argv, FALSE);
 }
 
 void
 scroll_horz(WebKitWebView* page, GArray *argv, GString *result) {
     (void) page; (void) result;
-    scroll(uzbl.gui.bar_h, argv);
+    scroll(argv, TRUE);
 }
 
 void
@@ -2821,7 +2840,7 @@ main (int argc, char* argv[]) {
     uzbl.gui.scrolled_win = gtk_scrolled_window_new (NULL, NULL);
     //main_window_ref = g_object_ref(scrolled_window);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (uzbl.gui.scrolled_win),
-        GTK_POLICY_NEVER, GTK_POLICY_NEVER); //todo: some sort of display of position/total length. like what emacs does
+        GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC); //todo: some sort of display of position/total length. like what emacs does
 
     gtk_container_add (GTK_CONTAINER (uzbl.gui.scrolled_win),
         GTK_WIDGET (uzbl.gui.web_view));
@@ -2859,12 +2878,6 @@ main (int argc, char* argv[]) {
         printf("pid %i\n", getpid ());
         printf("name: %s\n", uzbl.state.instance_name);
     }
-
-    uzbl.gui.scbar_v = (GtkScrollbar*) gtk_vscrollbar_new (NULL);
-    uzbl.gui.bar_v = gtk_range_get_adjustment((GtkRange*) uzbl.gui.scbar_v);
-    uzbl.gui.scbar_h = (GtkScrollbar*) gtk_hscrollbar_new (NULL);
-    uzbl.gui.bar_h = gtk_range_get_adjustment((GtkRange*) uzbl.gui.scbar_h);
-    gtk_widget_set_scroll_adjustments ((GtkWidget*) uzbl.gui.web_view, uzbl.gui.bar_h, uzbl.gui.bar_v);
 
     /* Check uzbl is in window mode before getting/setting geometry */
     if (uzbl.gui.main_window) {
