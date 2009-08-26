@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Allow mapping non-printing keys
+desc: Possibly use <Return> and such?
+type: :feature
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-26 13:14:39.741906 Z
+references: []
+
+id: 031b784ca338c9d6dd0e3b8541bd512cb540f55b
+log_events: 
+- - 2009-08-26 13:14:40.378995 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""

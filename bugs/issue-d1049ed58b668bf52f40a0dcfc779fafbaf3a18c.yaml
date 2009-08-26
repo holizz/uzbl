@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Create manpage
+desc: ""
+type: :task
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-26 13:12:58.546683 Z
+references: []
+
+id: d1049ed58b668bf52f40a0dcfc779fafbaf3a18c
+log_events: 
+- - 2009-08-26 13:12:59.416913 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""

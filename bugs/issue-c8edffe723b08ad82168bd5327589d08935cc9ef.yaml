@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: For a URI like foo.com:8080, prepend http://
+desc: Assume . in schema and path = all numbers => prepend http:// ...?
+type: :feature
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-26 13:16:38.690132 Z
+references: []
+
+id: c8edffe723b08ad82168bd5327589d08935cc9ef
+log_events: 
+- - 2009-08-26 13:16:39.090134 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""

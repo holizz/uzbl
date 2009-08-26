@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: FIFO cleaner script
+desc: Possibly set variable using FIFO and check for its presence via the socket?
+type: :feature
+component: uzbl
+release: 
+reporter: Tom Adams <tom@holizz.com>
+status: :unstarted
+disposition: 
+creation_time: 2009-08-26 13:17:26.750079 Z
+references: []
+
+id: d8dd068faa196a2c7643dae2f408746e2b26c12b
+log_events: 
+- - 2009-08-26 13:17:27.203000 Z
+  - Tom Adams <tom@holizz.com>
+  - created
+  - ""
